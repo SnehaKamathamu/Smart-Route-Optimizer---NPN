@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RouteOptim Pro - Login</title>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  :root {
+    --primary: #0a1929;
+    --secondary: #0d3b66;
+    --accent: #1d7cc7;
+    --accent-light: #4dabf7;
+    --teal: #2a9d8f;
+    --text-light: #e6f1ff;
+    --background: #0a1929;
+    --input-bg: #142c4f;
+    --input-border: #23857a;
+    --button-bg: linear-gradient(135deg, #1d7cc7, #23857a);
+    --button-hover-bg: linear-gradient(135deg, #23857a, #1d7cc7);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-light);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Navbar Styles */
+        nav {
+            background: var(--primary);
+            padding: 1.5rem 2rem; /* Increased vertical padding for taller navbar */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width:100%;
+            height:16vh;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent-light);
+        }
+
+        .logo h1 {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links text a:hover {
+            color: rgb(69, 205, 205);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* New Optimize Route button in navbar */
+        .nav-links .nav-optimize-btn {
+            background: linear-gradient(135deg, #1d7cc7, #23857a);
+            color: white;
+            padding: 0.6rem 1.8rem;
+            font-weight: 700;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(29, 124, 199, 0.6);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links .nav-optimize-btn:hover {
+            background: linear-gradient(135deg, #23857a, #1d7cc7);
+            box-shadow: 0 10px 25px rgba(29, 124, 199, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Updated Login button style */
+        .nav-links .login-btn {
+            background: linear-gradient(135deg, #23857a, #1d7cc7);
+            color: white;
+            padding: 0.7rem 2.2rem; /* Increased horizontal padding */
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(35, 133, 122, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links .login-btn:hover {
+            background: linear-gradient(135deg, #1d7cc7, #23857a);
+            box-shadow: 0 10px 25px rgba(35, 133, 122, 0.8);
+            transform: translateY(-2px);
+        }
+
+/* Login Container Style */
+  .login-container {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    padding: 3rem 3.5rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    width: 65vw;
+    max-width: 1000px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+
+  .login-container h2 {
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  label {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0;
+    display: block;
+    margin-top:0;
+    padding-top: 0;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    padding: 1rem 1.3rem;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: var(--input-bg);
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: var(--input-border);
+    box-shadow: 0 0 8px var(--input-border);
+  }
+
+  input[type="text"].password-visible {
+    padding: 1rem 1.3rem;
+    border-radius: 8px;
+    border: 2px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-light);
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 0 8px var(--input-border);
+  }
+
+  .show-password {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--accent-light);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .show-password input {
+    cursor: pointer;
+  }
+
+  button[type="submit"] {
+    padding: 1rem 0;
+    background: var(--button-bg);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(29, 124, 199, 0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  button[type="submit"]:hover {
+    background: var(--button-hover-bg);
+    box-shadow: 0 12px 30px rgba(29, 124, 199, 0.8);
+    transform: translateY(-3px);
+  }
+
+  .forgot-password {
+    margin-left: 25rem; 
+    font-size: 0.95rem;
+    color: var(--accent-light);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .forgot-password:hover {
+    color: var(--teal);
+  }
+
+  .signup-link {
+    margin-top: 1.8rem; 
+    font-size: 1rem;
+    color: var(--text-light);
+  }
+
+  .signup-link a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .signup-link a:hover {
+    color: var(--teal);
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      padding: 1rem 1.5rem;
+    }
+    .login-container {
+      width: 90vw;
+      max-height: 90vh;
+      margin-top: 1.5rem;
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+    }
+    .forgot-password {
+      margin-left: 0;
+    }
+  }
+</style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">
+      <i class="fas fa-truck-fast"></i>
+      <h1>RouteOptim Pro</h1>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="text">Routes Optimization</a>
+      <a href="#" class="text">Time Saved</a>
+      <a href="#" class="text">Efficiency</a>
+      <a href="/" class="nav-optimize-btn">Optimize Route</a>
+      <a href="/login" class="login-btn">Login</a>
+    </div>
+  </nav>
+
+  <!-- Login Container -->
+  <main class="login-container" role="main" aria-label="Login form">
+    <form id="loginForm" novalidate>
+      <h2>Welcome Back</h2>
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+        autocomplete="username"
+        aria-required="true"
+        aria-describedby="emailHelp"
+      />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+        autocomplete="current-password"
+        aria-required="true"
+      />
+      <div class="show-password">
+        <input type="checkbox" id="showPass" aria-label="Show password" />
+        <label for="showPass">Show Password</label>
+        <div class="forgot-password" tabindex="0" role="link" aria-label="Forgot password?">
+          Forgot password?
+        </div>
+      </div>
+      <button type="submit" aria-label="Log in to your account">Log In</button>
+    </form>
+    <div class="signup-link">
+      Don't have an account? <a href="/signup">Sign up</a>
+    </div>
+  </main>
+
+  <script>
+    // Show/hide password toggle with style fix
+    const showPassCheckbox = document.getElementById('showPass');
+    const passwordInput = document.getElementById('password');
+
+    showPassCheckbox.addEventListener('change', () => {
+      if (showPassCheckbox.checked) {
+        passwordInput.type = 'text';
+        passwordInput.classList.add('password-visible');
+      } else {
+        passwordInput.type = 'password';
+        passwordInput.classList.remove('password-visible');
+      }
+    });
+
+    // Simple form validation and submit handler
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      if (!email) {
+        alert('Please enter your email address.');
+        form.email.focus();
+        return;
+      }
+      if (!password) {
+        alert('Please enter your password.');
+        form.password.focus();
+        return;
+      }
+
+      // Here you would typically send data to your server
+      alert('Login successful! (This is a demo alert.)');
+      form.reset();
+      showPassCheckbox.checked = false;
+      passwordInput.type = 'password';
+      passwordInput.classList.remove('password-visible');
+    });
+
+    // Optional: handle "Forgot password?" click
+    document.querySelector('.forgot-password').addEventListener('click', () => {
+      alert('Redirecting to password recovery page...');
+      // window.location.href = '/forgot-password'; // example redirect
+    });
+  </script>
+</body>
+</html>
