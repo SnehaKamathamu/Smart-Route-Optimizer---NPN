@@ -602,7 +602,7 @@
 
 
         {% if locations and locations|length > 0 %}
-        <form action="/optimize_route" method="POST" id="routeForm">
+        <form action="https://web-production-f0ee.up.railway.app/optimize_route" method="POST" id="routeForm">
             <input type="hidden" name="filepath" value="{{ filepath }}">
             
             <div class="selection-section">
@@ -856,4 +856,5 @@
         });
     </script>
 </body>
+
 </html>
